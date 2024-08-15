@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "./page.module.css";
 import Chat from "../../components/chat";
 import WeatherWidget from "../../components/weather-widget";
-import { getWeather } from "../../utils/weather";
+import { getGolfCourse } from "../../utils/golf";
 import FileViewer from "../../components/file-viewer";
 
 const FunctionCalling = () => {
@@ -13,7 +13,7 @@ const FunctionCalling = () => {
   const functionCallHandler = async (call) => {
     if (call?.function?.name !== "get_weather") return;
     const args = JSON.parse(call.function.arguments);
-    const data = getWeather(args.location);
+    const data = getGolfCourse(args.location);
     setWeatherData(data);
     return JSON.stringify(data);
   };

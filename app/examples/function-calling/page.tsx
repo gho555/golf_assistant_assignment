@@ -3,27 +3,18 @@
 import React, { useState } from "react";
 import styles from "../shared/page.module.css";
 import Chat from "../../components/chat";
-import WeatherWidget from "../../components/weather-widget";
+import GolfWidget from "../../components/golf-widget";
 import { getGolfCourse } from "../../utils/golf";
 import { RequiredActionFunctionToolCall } from "openai/resources/beta/threads/runs/runs";
 
-interface WeatherData {
-  location?: string;
-  temperature?: number;
-  conditions?: string;
-}
-
 const FunctionCalling = () => {
-  const [weatherData, setWeatherData] = useState<WeatherData>({});
-  const isEmpty = Object.keys(weatherData).length === 0;
+  const [golfData, setGolfData] = useState([]);
 
   const functionCallHandler = async (call: RequiredActionFunctionToolCall) => {
-    //if (call?.function?.name !== "get_weather") return;
+    if (call?.function?.name !== "search_availability") return;
     const args = JSON.parse(call.function.arguments);
-    console.log(args);
     const data = await getGolfCourse(args.location);
-    console.log(data);
-    //    setWeatherData(data);
+    setGolfData(data);
     return JSON.stringify(data);
   };
 
@@ -31,12 +22,7 @@ const FunctionCalling = () => {
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={styles.column}>
-          <WeatherWidget
-            location={weatherData.location || "---"}
-            temperature={weatherData.temperature?.toString() || "---"}
-            conditions={weatherData.conditions || "Sunny"}
-            isEmpty={isEmpty}
-          />
+          <GolfWidget list={golfData} />
         </div>
         <div className={styles.chatContainer}>
           <div className={styles.chat}>

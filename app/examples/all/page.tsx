@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styles from "./page.module.css";
 import Chat from "../../components/chat";
-import WeatherWidget from "../../components/weather-widget";
+import GolfWidget from "../../components/golf-widget";
 import { getGolfCourse } from "../../utils/golf";
 import FileViewer from "../../components/file-viewer";
 
@@ -27,7 +27,7 @@ const FunctionCalling = () => {
   //       <div className={styles.chatContainer}>
   //         <div className={styles.weatherWidget}>
   //           <div className={styles.weatherContainer}>
-  //             <WeatherWidget {...weatherData} />
+  //             <GolfWidget {...weatherData} />
   //           </div>
   //         </div>
   //         <div className={styles.chat}>
@@ -42,7 +42,7 @@ const FunctionCalling = () => {
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={styles.column}>
-          <WeatherWidget {...weatherData} />
+          <GolfWidget {...weatherData} />
           <FileViewer />
         </div>
         <div className={styles.chatContainer}>

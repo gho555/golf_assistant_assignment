@@ -13,7 +13,7 @@ const FunctionCalling = () => {
   const functionCallHandler = async (call: RequiredActionFunctionToolCall) => {
     if (call?.function?.name !== "search_availability") return;
     const args = JSON.parse(call.function.arguments);
-    const data = await getGolfCourse(args.location);
+    const data = await getGolfCourse();
     setGolfData(data);
     return JSON.stringify(data);
   };

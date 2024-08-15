@@ -1,15 +1,9 @@
-.golfBackground {
-  background: linear-gradient(to bottom left, #ffffd0, #00f05c);
-}
-
 .golfWidget {
+  background: linear-gradient(to bottom left, #523db3, #061e4b);
   width: 100%;
   height: 100%;
   padding: 4px;
   padding: 20px;
-  color: white;
+  color: rgb(231, 216, 216);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  align-items: center;
-  justify-content: center;
-  display: flex;
 }

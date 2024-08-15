@@ -13,7 +13,7 @@ const FunctionCalling = () => {
   const functionCallHandler = async (call) => {
     if (call?.function?.name !== "get_weather") return;
     const args = JSON.parse(call.function.arguments);
-    const data = getGolfCourse(args.location);
+    const data = getGolfCourse();
     setWeatherData(data);
     return JSON.stringify(data);
   };
